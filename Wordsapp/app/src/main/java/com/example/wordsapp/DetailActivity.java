@@ -4,11 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,84 +13,32 @@ public class DetailActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<WordModel> modelArrayList;
     WordAdapter wordAdapter;
-    String[] wordA = new String[]{
-            "Apple", "About", "Acne", "Alphabet", "Anchor"
-    };
-    String[] wordB = new String[]{
-            "Bakery", "Balance", "Banana", "Band", "Bank"
-    };
-    String[] wordC = new String[]{
-            "Car", "Cat", "Computer", "Cake", "Camera"
-    };
-    String[] wordD = new String[]{
-            "Dog", "Door", "Dinner", "Drink", "Desk"
-    };
-    String[] wordE = new String[]{
-            "Elephant", "Egg", "Earth", "Exercise", "Eat"
-    };
-    String[] wordF = new String[]{
-            "Friend", "Family", "Flower", "Food", "Fun"
-    };
-    String[] wordG = new String[]{
-            "Good", "Great", "Game", "Garden", "Gift"
-    };
-    String[] wordH = new String[]{
-            "House", "Hat", "Happy", "Help", "Heart"
-    };
-    String[] wordI = new String[]{
-            "Idea", "Ice", "Interesting", "Island", "Important"
-    };
-    String[] wordJ = new String[]{
-            "Joke", "Juice", "Jacket", "Joy", "Journal"
-    };
-    String[] wordK = new String[]{
-            "Kangaroo", "Kindness", "Kitchen", "Key", "Kind"
-    };
-    String[] wordL = new String[]{
-            "Lion", "Lamp", "Lemon", "Language", "Library"
-    };
-    String[] wordM = new String[]{
-            "Music", "Movie", "Mountain", "Meal", "Moon"
-    };
-    String[] wordN = new String[]{
-            "Nature", "Night", "Newspaper", "Name", "Nose"
-    };
-    String[] wordO = new String[]{
-            "Ocean", "Orange", "Office", "Octopus", "Oven"
-    };
-    String[] wordP = new String[]{
-            "Party", "Park", "Pizza", "Pencil", "Phone"
-    };
-    String[] wordQ = new String[]{
-            "Queen", "Quick", "Quiet", "Quilt", "Quench"
-    };
-    String[] wordR = new String[]{
-            "Rainbow", "Room", "Rabbit", "Rose", "River"
-    };
-    String[] wordS = new String[]{
-            "Summer", "Sun", "School", "Sand", "Sandwich"
-    };
-    String[] wordT = new String[]{
-            "Tree", "Table", "Telephone", "Television", "Tiger"
-    };
-    String[] wordU = new String[]{
-            "Umbrella", "Unicorn", "Uniform", "University", "Upstairs"
-    };
-    String[] wordV = new String[]{
-            "Umbrella", "Unicorn", "Uniform", "University", "Upstairs"
-    };
-    String[] wordW = new String[]{
-            "Water", "Window", "Watch", "Wheel", "Wine"
-    };
-    String[] wordX = new String[]{
-            "X-ray", "Xenophobia", "Xylophone", "Xenon", "Xerophyte"
-    };
-    String[] wordY = new String[]{
-            "Yummy", "Yogic", "Yarrow", "Yearly", "Yeast"
-    };
-    String[] wordZ = new String[]{
-            "Zany", "Zestful", "Zenith", "Zonal", "Zygotic"
-    };
+    String[] wordA = new String[]{"Apple", "About", "Acne", "Alphabet", "Anchor"};
+    String[] wordB = new String[]{"Bakery", "Balance", "Banana", "Band", "Bank"};
+    String[] wordC = new String[]{"Car", "Cat", "Computer", "Cake", "Camera"};
+    String[] wordD = new String[]{"Dog", "Door", "Dinner", "Drink", "Desk"};
+    String[] wordE = new String[]{"Elephant", "Egg", "Earth", "Exercise", "Eat"};
+    String[] wordF = new String[]{"Friend", "Family", "Flower", "Food", "Fun"};
+    String[] wordG = new String[]{"Good", "Great", "Game", "Garden", "Gift"};
+    String[] wordH = new String[]{"House", "Hat", "Happy", "Help", "Heart"};
+    String[] wordI = new String[]{"Idea", "Ice", "Interesting", "Island", "Important"};
+    String[] wordJ = new String[]{"Joke", "Juice", "Jacket", "Joy", "Journal"};
+    String[] wordK = new String[]{"Kangaroo", "Kindness", "Kitchen", "Key", "Kind"};
+    String[] wordL = new String[]{"Lion", "Lamp", "Lemon", "Language", "Library"};
+    String[] wordM = new String[]{"Music", "Movie", "Mountain", "Meal", "Moon"};
+    String[] wordN = new String[]{"Nature", "Night", "Newspaper", "Name", "Nose"};
+    String[] wordO = new String[]{"Ocean", "Orange", "Office", "Octopus", "Oven"};
+    String[] wordP = new String[]{"Party", "Park", "Pizza", "Pencil", "Phone"};
+    String[] wordQ = new String[]{"Queen", "Quick", "Quiet", "Quilt", "Quench"};
+    String[] wordR = new String[]{"Rainbow", "Room", "Rabbit", "Rose", "River"};
+    String[] wordS = new String[]{"Summer", "Sun", "School", "Sand", "Sandwich"};
+    String[] wordT = new String[]{"Tree", "Table", "Telephone", "Television", "Tiger"};
+    String[] wordU = new String[]{"Umbrella", "Unicorn", "Uniform", "University", "Upstairs"};
+    String[] wordV = new String[]{"Umbrella", "Unicorn", "Uniform", "University", "Upstairs"};
+    String[] wordW = new String[]{"Water", "Window", "Watch", "Wheel", "Wine"};
+    String[] wordX = new String[]{"X-ray", "Xenophobia", "Xylophone", "Xenon", "Xerophyte"};
+    String[] wordY = new String[]{"Yummy", "Yogic", "Yarrow", "Yearly", "Yeast"};
+    String[] wordZ = new String[]{"Zany", "Zestful", "Zenith", "Zonal", "Zygotic"};
 
     ArrayList<String> wordsList = new ArrayList<String>();
 
@@ -212,9 +156,6 @@ public class DetailActivity extends AppCompatActivity {
                 wordsList.add(word);
             }
         }
-
-        Toast.makeText(this, "got " + position, Toast.LENGTH_SHORT).show();
-
         recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -228,6 +169,5 @@ public class DetailActivity extends AppCompatActivity {
             modelArrayList.add(wordModel);
         }
         wordAdapter.notifyDataSetChanged();
-
     }
 }

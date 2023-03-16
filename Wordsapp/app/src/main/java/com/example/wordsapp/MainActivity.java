@@ -1,5 +1,4 @@
 package com.example.wordsapp;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.res.ResourcesCompat;
@@ -15,9 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-
     RecyclerView recyclerView;
     ArrayList<LetterModel> modelArrayList;
     LetterAdapter letterAdapter;
@@ -27,13 +24,10 @@ public class MainActivity extends AppCompatActivity {
     };
     GridLayoutManager gridLayoutManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-       // AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
         gridLayoutManager = new GridLayoutManager(this, 1);
 
@@ -78,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchIcon(MenuItem item) {
-        if (gridLayoutManager.getSpanCount() == 4) {
+        if (gridLayoutManager.getSpanCount() == 3) {
             item.setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_grid_layout, null));
         } else {
             item.setIcon(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_linear_layout, null));
