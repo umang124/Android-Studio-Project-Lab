@@ -23,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
             "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     };
     GridLayoutManager gridLayoutManager;
+    public static final int SPAN_COUNT_ONE = 1;
+    public static final int SPAN_COUNT_THREE = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        gridLayoutManager = new GridLayoutManager(this, 1);
+        gridLayoutManager = new GridLayoutManager(this, SPAN_COUNT_ONE);
 
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -63,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void switchLayout() {
-        if (gridLayoutManager.getSpanCount() == 1) {
-            gridLayoutManager.setSpanCount(3);
+        if (gridLayoutManager.getSpanCount() == SPAN_COUNT_ONE) {
+            gridLayoutManager.setSpanCount(SPAN_COUNT_THREE);
         } else {
-            gridLayoutManager.setSpanCount(1);
+            gridLayoutManager.setSpanCount(SPAN_COUNT_ONE);
         }
         letterAdapter.notifyItemRangeChanged(0, letterAdapter.getItemCount());
     }

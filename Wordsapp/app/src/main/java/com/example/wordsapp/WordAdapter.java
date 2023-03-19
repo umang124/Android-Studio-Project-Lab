@@ -1,9 +1,12 @@
 package com.example.wordsapp;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +35,16 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordViewHolder
     public void onBindViewHolder(@NonNull WordViewHolder holder, int position) {
         WordModel wordModel = modelArrayList.get(position);
         holder.button.setText(wordModel.word);
+
+        holder.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String word = holder.button.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://www.google.com/search?q=" + word));
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

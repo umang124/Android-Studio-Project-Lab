@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         buttonCalculateTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TextUtils.isEmpty(etCostOfService.getText().toString())) {
+                    Toast.makeText(MainActivity.this, "Value is null", Toast.LENGTH_SHORT).show();
+                }
                 try {
                     Double.parseDouble(etCostOfService.getText().toString());
                 } catch (NumberFormatException ex) {
@@ -83,13 +87,7 @@ public class MainActivity extends AppCompatActivity {
         switchRoundUpTip.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    roundUpTipChecked = true;
-                    Toast.makeText(MainActivity.this, "CHanged true", Toast.LENGTH_SHORT).show();
-                } else {
-                    roundUpTipChecked = false;
-                    Toast.makeText(MainActivity.this, "CHanged false", Toast.LENGTH_SHORT).show();
-                }
+                roundUpTipChecked = isChecked;
             }
         });
     }

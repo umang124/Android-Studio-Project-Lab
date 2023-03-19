@@ -1,51 +1,30 @@
 package com.example.dessertclicker;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ShareCompat;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ShareCompat;
+import androidx.databinding.DataBindingUtil;
 
 import com.example.dessertclicker.databinding.ActivityMainBinding;
 
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity {
     private int revenue = 0;
     private int dessertsSold = 0;
-    public static final String KEY_REVENUE = "revenue_key";
-    public static final String KEY_DESSERT_SOLD = "dessert_sold_key";
     private ActivityMainBinding binding;
-    private static final String TAG = "MainActivity";
-    public class Dessert {
-        private final int imageId;
-        private final int price;
-        private final int startProductionAmount;
-        public Dessert(int imageId, int price, int startProductionAmount) {
-            this.imageId = imageId;
-            this.price = price;
-            this.startProductionAmount = startProductionAmount;
-        }
-        public int getImageId() {
-            return imageId;
-        }
-        public int getPrice() {
-            return price;
-        }
-        public int getStartProductionAmount() {
-            return startProductionAmount;
-        }
-    }
+
+
     private final List<Dessert> allDesserts = Arrays.asList(
             new Dessert(R.drawable.cupcake, 5, 0),
             new Dessert(R.drawable.donut, 10, 5),
@@ -66,40 +45,43 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d(TAG, "onCreate Called");
+        Log.d(ConstantVariable.TAG, "onCreate Called");
         // Use Data Binding to get reference to the views
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        binding.dessertButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onDessertClicked();
-            }
-        });
+        binding.dessertButton.setOnClickListener(view -> onDessertClicked());
 
         // Set the TextViews to the right values
-        binding.setRevenue(revenue);
-        binding.setAmountSold(dessertsSold);
+        setRevenueAndAmountSold(revenue, dessertsSold);
 
         // Make sure the correct dessert is showing
         binding.dessertButton.setImageResource(currentDessert.getImageId());
 
-        if (savedInstanceState != null) {
-
-            revenue = savedInstanceState.getInt(KEY_REVENUE, 0);
-            dessertsSold = savedInstanceState.getInt(KEY_DESSERT_SOLD, 0);
-            binding.setRevenue(revenue);
-            binding.setAmountSold(dessertsSold);
+        if (checkIfSavedInstanceStateIsNotNull(savedInstanceState)) {
+            revenue = savedInstanceState.getInt(ConstantVariable.KEY_REVENUE, 0);
+            dessertsSold = savedInstanceState.getInt(ConstantVariable.KEY_DESSERT_SOLD, 0);
+            setRevenueAndAmountSold(revenue, dessertsSold);
             showCurrentDessert();
         }
+    }
+    private boolean checkIfSavedInstanceStateIsNotNull(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            return true;
+        }
+        return false;
+    }
+
+    private void setRevenueAndAmountSold(int revenue, int dessertsSold) {
+        binding.setRevenue(revenue);
+        binding.setAmountSold(dessertsSold);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d(TAG, "onSaveInstanceState Called");
-        outState.putInt(KEY_REVENUE, revenue);
-        outState.putInt(KEY_DESSERT_SOLD, dessertsSold);
+        Log.d(ConstantVariable.TAG, "onSaveInstanceState Called");
+        outState.putInt(ConstantVariable.KEY_REVENUE, revenue);
+        outState.putInt(ConstantVariable.KEY_DESSERT_SOLD, dessertsSold);
     }
 
     /**
@@ -129,10 +111,6 @@ public class MainActivity extends AppCompatActivity {
             if (dessertsSold >= dessert.getStartProductionAmount()) {
                 newDessert = dessert;
             }
-            // The list of desserts is sorted by startProductionAmount. As you sell more desserts,
-            // you'll start producing more expensive desserts as determined by startProductionAmount
-            // We know to break as soon as we see a dessert who's "startProductionAmount" is greater
-            // than the amount sold.
             else break;
         }
         // If the new dessert is actually different than the current dessert, update the image
@@ -145,41 +123,43 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "onStart Called");
+        Log.d(ConstantVariable.TAG, ConstantVariable.ON_START_CALLED);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "onResume Called");
+        Log.d(ConstantVariable.TAG, ConstantVariable.ON_RESUME_CALLED);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "onPause Called");
+        Log.d(ConstantVariable.TAG, ConstantVariable.ON_PAUSE_CALLED);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "onStop Called");
+        Log.d(ConstantVariable.TAG, ConstantVariable.ON_STOP_CALLED);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "onStop Called");
+        Log.d(ConstantVariable.TAG, ConstantVariable.ON_DESTROY_CALLED);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG, "onRestart Called");
+        Log.d(ConstantVariable.TAG, ConstantVariable.ON_RESTART_CALLED);
     }
 
     private void onShare() {
-        Intent shareIntent = ShareCompat.IntentBuilder.from(this).setText(getString(R.string.share_text, dessertsSold, revenue)).setType("text/plain").getIntent();
+        Intent shareIntent = ShareCompat.IntentBuilder.from(this)
+                .setText(getString(R.string.share_text, dessertsSold, revenue))
+                .setType("text/plain").getIntent();
         try {
             startActivity(shareIntent);
         } catch (ActivityNotFoundException ex) {
