@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setHasFixedSize(true);
+
         modelArrayList = new ArrayList<>();
         letterAdapter = new LetterAdapter(this, modelArrayList, gridLayoutManager);
         recyclerView.setAdapter(letterAdapter);

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/bg_image"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="244dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/marvel"
+        android:gravity="center"
+        android:text="@string/sql_lite_crud_app"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextSizeCheck" />
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="339dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:fontFamily="@font/marvel"
+        android:gravity="center"
+        android:hint="@string/name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textColor="#FFFBFB"
+        android:textColorHint="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/etContact"
+        android:layout_width="337dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:fontFamily="@font/marvel"
+        android:gravity="center"
+        android:hint="@string/contact"
+        android:inputType="textPersonName"
+        android:textColor="#F4F4F4"
+        android:textColorHint="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/etName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etName"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
+
+    <EditText
+        android:id="@+id/etDOB"
+        android:layout_width="335dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="8dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:fontFamily="@font/marvel"
+        android:gravity="center"
+        android:hint="@string/date_of_birth"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFDFD"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/etContact"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etContact"
+        app:layout_constraintTop_toBottomOf="@+id/etContact" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="159dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/marvel"
+        android:text="@string/update"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/etDOB"
+        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
+
+    <Button
+        android:id="@+id/buttonView"
+        android:layout_width="159dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/marvel"
+        android:text="@string/view"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/etDOB"
+        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
+
+    <Button
+        android:id="@+id/buttonInsert"
+        android:layout_width="159dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/marvel"
+        android:text="@string/insert"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/etDOB"
+        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="159dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="184dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/custom_button"
+        android:fontFamily="@font/marvel"
+        android:text="@string/delete"
+        android:textSize="20sp"
+
+        app:layout_constraintStart_toStartOf="@+id/etDOB"
+        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

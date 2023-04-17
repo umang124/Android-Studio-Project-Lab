@@ -19,7 +19,8 @@ public class LetterAdapter extends RecyclerView.Adapter<LetterAdapter.LetterView
     ArrayList<LetterModel> modelArrayList;
     GridLayoutManager mLayoutManager;
 
-    public LetterAdapter(Context context, ArrayList<LetterModel> modelArrayList, GridLayoutManager layoutManager) {
+    public LetterAdapter(Context context, ArrayList<LetterModel> modelArrayList,
+                         GridLayoutManager layoutManager) {
         this.context = context;
         this.modelArrayList = modelArrayList;
         mLayoutManager = layoutManager;
